@@ -1,0 +1,11 @@
+# 文件上传路径
+spring:
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/qiruan?useUnicode=true&characterEncoding=UTF-8&useSSL=false
+    username: root
+    password: lcl123
+  file:
+    filePath: /Users/zlatan/Desktop/ceshi/
+#前端地址
+    urlPath: /Users/zlatan/Desktop/ceshi/
