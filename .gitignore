@@ -4,3 +4,5 @@ src/test/test.iml
 .idea
 .idea/vcs.xml
 *.xml
+target
+qi_back_end.iml
