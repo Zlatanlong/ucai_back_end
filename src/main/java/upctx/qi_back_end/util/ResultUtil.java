@@ -1,5 +1,5 @@
 package upctx.qi_back_end.util;
-
+/*对result_domain中的对象进行操作*/
 import upctx.qi_back_end.domain.result_domain.Result;
 import upctx.qi_back_end.exception.enums.ResultEnum;
 

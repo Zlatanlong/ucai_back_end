@@ -30,6 +30,7 @@ public class DishManagerAspect {
     public void doBefore(JoinPoint joinPoint) {
         ServletRequestAttributes attributes = (ServletRequestAttributes) RequestContextHolder.getRequestAttributes();
         HttpServletRequest request = attributes.getRequest();
+        /*Optional 类可以用来判断空指针,是可以为空的容器对象,如果值存在,则调用get方法可以返回对象,否则抛出异常*/
         Optional optional = (Optional) request.getSession().getAttribute("DishManager");
         if (optional == null) {
             throw new MyException(ResultEnum.AUTHENTICATION_DISH_ERROR);

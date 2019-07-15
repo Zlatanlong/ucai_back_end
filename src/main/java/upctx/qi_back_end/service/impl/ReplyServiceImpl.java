@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 import upctx.qi_back_end.domain.LikesReply;
 import upctx.qi_back_end.domain.Reply;
 import upctx.qi_back_end.domain.result_domain.Result;
@@ -13,6 +14,7 @@ import upctx.qi_back_end.repository.LikesReplyRepository;
 import upctx.qi_back_end.repository.ReplyRepository;
 import upctx.qi_back_end.repository.UserRepository;
 import upctx.qi_back_end.service.ReplyService;
+import upctx.qi_back_end.util.FileUtil;
 import upctx.qi_back_end.util.ResultUtil;
 import upctx.qi_back_end.util.UserUtil;
 
@@ -26,12 +28,30 @@ public class ReplyServiceImpl implements ReplyService {
     private UserRepository userRepository;
     @Autowired
     private LikesReplyRepository likesReplyRepository;
+    @Autowired
+    private FileUtil fileUtil;
 
     @Override
     public Result<Reply> addReply(Reply reply) {
         Integer id = UserUtil.getUserId();
         reply.setFromUserId(id);
         return ResultUtil.success(replyRepository.save(reply));
+    }
+
+    @Override
+    public Result<Reply> insertImg2Reply(Integer replyId, MultipartFile file) {
+        Optional optional = replyRepository.findById(replyId);
+        if (optional.isPresent()) {
+            String url = fileUtil.upload(file, "reply");
+            if (url == null) {
+                throw new MyException(ResultEnum.REPLY_FILE_UPLOAD_ERROR);
+            } else {
+                Reply reply = (Reply) optional.get();
+                reply.setReplyImg(url);
+                return ResultUtil.success(replyRepository.save(reply));
+            }
+        }
+        return null;
     }
 
     @Override

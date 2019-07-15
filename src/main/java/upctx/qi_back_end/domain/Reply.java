@@ -30,6 +30,8 @@ public class Reply {
     @Column(columnDefinition = "int default 0")
     private Integer likesCount = 0;
     private Boolean seen = false;
+    private String replyImg;
+
 
     public Integer getId() {
         return id;
@@ -109,5 +111,13 @@ public class Reply {
 
     public void setSeen(Boolean seen) {
         this.seen = seen;
+    }
+
+    public String getReplyImg() {
+        return replyImg;
+    }
+
+    public void setReplyImg(String replyImg) {
+        this.replyImg = replyImg;
     }
 }

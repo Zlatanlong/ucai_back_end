@@ -10,6 +10,11 @@ import javax.servlet.http.HttpServletRequest;
 import java.util.Optional;
 
 public class UserUtil {
+    /**
+     * 从cookie中获取用户,同时判断登录状态
+     * @param key
+     * @return
+     */
     public static Integer getUserId(String key) {
         ServletRequestAttributes attributes = (ServletRequestAttributes) RequestContextHolder.getRequestAttributes();
         HttpServletRequest request = attributes.getRequest();

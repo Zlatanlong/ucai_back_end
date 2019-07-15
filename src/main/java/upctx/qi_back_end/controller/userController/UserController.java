@@ -72,6 +72,11 @@ public class UserController {
         return replyService.addReply(reply);
     }
 
+    @PostMapping("/reply/img")
+    public Result<Reply> insertImg2Reply(Integer replyId, @RequestParam("file") MultipartFile file) {
+        return replyService.insertImg2Reply(replyId, file);
+    }
+
     @GetMapping("/notices/notseen")
     public Result getNoticesNotSeen() {
         return noticeService.getNotSeenNotice();
