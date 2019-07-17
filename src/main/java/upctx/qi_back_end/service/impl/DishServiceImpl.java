@@ -48,12 +48,17 @@ public class DishServiceImpl implements DishService {
 
     @Override
     public Result<List<Dish>> getDishPage(Integer start, Integer size) {
+        return this.getDishPage(start, size, "id");
+
+    }
+    @Override
+    public Result<List<Dish>> getDishPage(Integer start, Integer size, String rankStr) {
         if (start < 1) {
             throw new MyException(ResultEnum.PAGE_START_ERROR);
         }
         List<Dish> list = dishRepository.findByIfDelNot(1,
                 PageRequest.of(start - 1, size,
-                        Sort.by(Sort.Direction.DESC, "id"))).getContent();
+                        Sort.by(Sort.Direction.DESC, rankStr))).getContent();
         if (list.isEmpty()) {
             throw new MyException(ResultEnum.DISH_NULL);
         } else {
@@ -86,6 +91,7 @@ public class DishServiceImpl implements DishService {
             return ResultUtil.success(list);
         }
     }
+
 
     @Override
     public Result<Dish> getDish(Integer id) {

@@ -14,13 +14,18 @@ public interface DishService {
     Result<Integer> getCount();
 
     /**
-     * 按页码获取部分菜品信息
+     * 对楼下的重载
+     */
+    Result<List<Dish>> getDishPage(Integer start, Integer size);
+
+    /**
      *
      * @param start 起始页,1 开始
      * @param size  一页多少条
+     * @param rankStr 根据rankStr获取排序好的页
      * @return
      */
-    Result<List<Dish>> getDishPage(Integer start, Integer size);
+    Result<List<Dish>> getDishPage(Integer start, Integer size, String rankStr);
 
     Result<List<Dish>> getDishHome();
 
@@ -29,8 +34,9 @@ public interface DishService {
 
     Result<List<Dish>> getDishPageSearch(String sth, Integer start, Integer size);
 
-    // 获取单个菜品全部信息（菜名/id）（查）
+
     Result<Dish> getDish(Integer id);
+    // 获取单个菜品全部信息（菜名/id）（查）
 
     // 添加菜品
     Result<Integer> addDish(Dish dish, MultipartFile file);
