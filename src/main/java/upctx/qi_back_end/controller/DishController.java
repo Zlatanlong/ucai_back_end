@@ -41,13 +41,8 @@ public class DishController {
      */
     @GetMapping("/get/bypage")
     public Result<List<Dish>> getDishPage(@RequestParam Integer start,
-                                          @RequestParam Integer size,
-                                          @RequestParam String rank) {
-        if (rank == null || rank == "") {
-            return dishService.getDishPage(start, size);
-        } else {
-            return dishService.getDishPage(start, size, rank);
-        }
+                                          @RequestParam Integer size) {
+        return dishService.getDishPage(start, size);
     }
 
     @GetMapping("/get/searchcount")
