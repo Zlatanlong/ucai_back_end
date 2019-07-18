@@ -111,7 +111,7 @@ public class RestaurantServiceImpl implements RestaurantService {
         //先获取全部餐厅的经纬度,再比较大小，返回餐厅号
         Double latitude = Math.toRadians(Latitude);
         Double longitude = Math.toRadians(Longitude);
-        Double minDistance = 5.0;
+        Double minDistance = 400.0;
         Double restaurantLatitude;
         Double restaurantLongitude;
         Double cos, acos;
