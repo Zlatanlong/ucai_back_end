@@ -18,5 +18,9 @@ public interface RestaurantRepository extends JpaRepository<Restaurant, Integer>
     @Query("select id,name from Restaurant where ifDel<> 1")
     List<Restaurant> findAllIdAndName();
 
+    //获取经纬度和餐厅号
+    @Query("select id,latitude,longitude from Restaurant  where ifDel <> 1")
+    List<Restaurant> findAllIdAndLatitudeAndLongitude();
+
     Page<Restaurant> findByIfDelNot(Integer ifDel, Pageable pageable);
 }

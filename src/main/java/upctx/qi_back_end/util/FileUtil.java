@@ -10,6 +10,7 @@ import java.util.UUID;
 
 @Component
 public class FileUtil {
+    /*获取.yml中的属性*/
     @Value("${spring.file.filePath}")
     private String filePath;
     @Value("${spring.file.urlPath}")
@@ -25,9 +26,10 @@ public class FileUtil {
     public String upload(MultipartFile file, String newDirUrl) {
         // 获取文件名
         String fileName = file.getOriginalFilename();
-        // 获取后缀
+        // 获取后缀,图片文件格式
         String suffixName = fileName.substring(fileName.lastIndexOf("."));
         // fileName处理
+        //生成唯一的随机数
         String random = String.valueOf(UUID.randomUUID());
         String url = urlPath + newDirUrl + "/" + random + fileName;
         fileName = filePath + newDirUrl + "/" + random + fileName;
@@ -45,6 +47,8 @@ public class FileUtil {
             return null;
         }
     }
+
+
 
     // 重载
     public String upload(MultipartFile file) {

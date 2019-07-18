@@ -22,6 +22,18 @@ public class RestaurantController {
     }
 
 
+    @GetMapping("/get/getdishbylocation")
+    public Result<Dish> getClosestRestaurant(Double Latitude, Double Longitude){
+        return restaurantService.getDishByLocation(Latitude,Longitude);
+
+    }
+    //测试从数据库中获取经纬度和数据库的id
+
+    @GetMapping("/get/getlatitude")
+    public Result<List<Restaurant>> getLatitude(){
+        return restaurantService.getLatitude();
+    }
+
     @GetMapping("/get/count")
     public Result<Integer> getCount() {
         return restaurantService.getCount();

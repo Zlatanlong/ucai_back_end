@@ -2,10 +2,10 @@
 spring:
   datasource:
     driver-class-name: com.mysql.jdbc.Driver
-    url: jdbc:mysql://127.0.0.1:3306/qiruan?useUnicode=true&characterEncoding=UTF-8&useSSL=false
+    url: jdbc:mysql://127.0.0.1:3306/dish?serverTimezone=UTC
     username: root
-    password: lcl123
+    password: du123123
   file:
-    filePath: /Users/zlatan/Desktop/ceshi/
+    filePath: E://Summer/ucai_back_end/test/localImages/
 #前端地址
-    urlPath: /Users/zlatan/Desktop/ceshi/
+    urlPath:  E://Summer/ucai_back_end/test/urlImages/

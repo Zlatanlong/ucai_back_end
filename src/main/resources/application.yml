@@ -1,6 +1,6 @@
 spring:
   profiles:
-    active: prod
+    active: dev
   jpa:
     hibernate:
       ddl-auto: update
@@ -20,8 +20,8 @@ spring:
   # JavaMailSender 邮件发送的配置
   mail:
     host: smtp.qq.com
-    username: long-txgc@foxmail.com
-    password: twykpbiewtzvbdcj
+    username: 3462033963@qq.com
+    password: eypthiyigqzbcjhc
     properties:
       mail:
         smtp:
