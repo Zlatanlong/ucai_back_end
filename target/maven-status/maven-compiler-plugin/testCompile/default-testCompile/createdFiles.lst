@@ -1,5 +1,5 @@
-upctx\qi_back_end\QiBackEndApplicationTests.class
-upctx\qi_back_end\util\test.class
-upctx\qi_back_end\util\SendRegMailUtilTest.class
-upctx\qi_back_end\service\impl\UserServiceImplTest.class
-upctx\qi_back_end\service\UserServiceTest.class
+upctx/qi_back_end/service/impl/UserServiceImplTest.class
+upctx/qi_back_end/util/SendRegMailUtilTest.class
+upctx/qi_back_end/QiBackEndApplicationTests.class
+upctx/qi_back_end/service/UserServiceTest.class
+upctx/qi_back_end/util/test.class

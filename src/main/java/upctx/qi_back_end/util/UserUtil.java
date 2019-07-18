@@ -25,7 +25,6 @@ public class UserUtil {
             return id;
         }
     }
-    //重载
 
     public static Integer getUserId() {
         return getUserId("User");

@@ -16,7 +16,6 @@ import upctx.qi_back_end.repository.RestaurantRepository;
 import upctx.qi_back_end.service.RestaurantService;
 import upctx.qi_back_end.util.ResultUtil;
 
-import java.math.BigDecimal;
 import java.util.*;
 
 @Service
@@ -31,7 +30,6 @@ public class RestaurantServiceImpl implements RestaurantService {
     @Override
     public Result<List<Restaurant>> getAllRestaurantName() {
         List<Restaurant> list = restaurantRepository.findAllIdAndName();
-
         if (list.isEmpty()) {
             throw new MyException(ResultEnum.RESTAURANT_NULL);
         } else {
@@ -46,7 +44,6 @@ public class RestaurantServiceImpl implements RestaurantService {
             return ResultUtil.success(mapList);
         }
     }
-
 
     @Override
     public Result<Integer> getCount() {
@@ -96,81 +93,6 @@ public class RestaurantServiceImpl implements RestaurantService {
         }
     }
 
-
-    /**
-     * 根据餐厅号查询，先通过位置信息获取餐厅号，再查询
-     *
-     * @param Latitude
-     * @param Longitude
-     * @return
-     */
-
-    @Override
-    public Result<Dish> getDishByLocation(Double Latitude, Double Longitude) {
-        Integer id = 1;
-        //先获取全部餐厅的经纬度,再比较大小，返回餐厅号
-        Double latitude = Math.toRadians(Latitude);
-        Double longitude = Math.toRadians(Longitude);
-        Double minDistance = 5.0;
-        Double restaurantLatitude;
-        Double restaurantLongitude;
-        Double cos, acos;
-        Integer count = 0;
-        Double distance;
-        List<Restaurant> list = restaurantRepository.findAllIdAndLatitudeAndLongitude();
-        if (list.isEmpty()) {
-            System.out.println("获取的餐厅列表为空");
-            throw new MyException(ResultEnum.RESTAURANT_NULL);
-
-        } else {
-            for (Object object : list) {
-                Object[] cells = (Object[]) object;
-                restaurantLatitude = Math.toRadians(Double.valueOf(cells[1].toString()));
-                restaurantLongitude = Math.toRadians(Double.valueOf(cells[2].toString()));
-
-                System.out.println("餐厅ID" + cells[0]);
-                System.out.println("餐厅经度" + cells[1]);
-                System.out.println("餐厅纬度" + cells[2]);
-
-                cos = Math.cos(longitude) * Math.cos(restaurantLongitude) * Math.cos(latitude - restaurantLatitude)
-                        + Math.sin(longitude) * Math.sin(restaurantLongitude);
-                acos = Math.acos(cos);
-                distance = acos;
-
-                System.out.println("距离：" + distance);
-
-                //如果最小距离大于距离，则进入，将距离赋给最小距离
-
-                //当distance 小于minDistance  的时候返回 -1，bug:当结果相等时，会返回NAN，
-                if(distance.compareTo(minDistance) > 0 && !Double.isNaN(distance))
-                {
-                    System.out.println("距离大，不赋值");
-                } else if(distance.compareTo(minDistance) < 0 && !Double.isNaN(distance)){
-                    minDistance = distance;
-                    count++;
-                    id = Integer.valueOf(cells[0].toString());
-                    System.out.println("count:" + count + "距离小，id赋值");
-
-                }else {
-                    //minDistance = minDistance;
-                    id = Integer.valueOf(cells[0].toString());
-                    System.out.println("等距离，id赋值");
-                    break;
-                }
-
-            }
-            System.out.println("餐厅ID：" + id);
-            List<Dish> DishList = dishRepository.findByRestaurantId(id);
-            if (DishList.isEmpty()) {
-                throw new MyException(ResultEnum.RESTAURANT_DISH_NULL);
-            } else {
-                return ResultUtil.success(DishList);
-            }
-
-        }
-    }
-
-
     @Override
     public Result<List<Reply>> getReplyByRestaurantId(Integer id) {
         Result<Dish> result = getDishByRestaurant(id);
@@ -196,7 +118,6 @@ public class RestaurantServiceImpl implements RestaurantService {
         }
     }
 
-
     @Override
     public Result<Restaurant> addRestaurant(Restaurant restaurant) {
         return ResultUtil.success(restaurantRepository.save(restaurant));
@@ -211,37 +132,5 @@ public class RestaurantServiceImpl implements RestaurantService {
         } else {
             throw new MyException(ResultEnum.RESTAURANT_NULL);
         }
-    }
-
-    /**
-     * 测试函数，用来测试获取餐厅经纬度
-     * @return
-     */
-    @Override
-    public Result<List<Restaurant>> getLatitude() {
-        List<Restaurant> list = restaurantRepository.findAllIdAndLatitudeAndLongitude();
-
-        if (list.isEmpty()) {
-            throw new MyException(ResultEnum.RESTAURANT_NULL);
-        } else {
-            List<Map<String, Object>> mapList = new ArrayList<>();
-            for (Object object : list) {
-                Map<String, Object> temp = new HashMap<>();
-                Object[] cells = (Object[]) object;
-                temp.put("id", cells[0]);
-                temp.put("latitude", cells[1]);
-                temp.put("longitude", cells[2]);
-                System.out.println("餐厅ID: " + Integer.valueOf(cells[0].toString()));
-                System.out.println("餐厅经度: " + Double.valueOf(cells[1].toString()));
-                System.out.println("餐厅纬度: " + Double.valueOf(cells[2].toString()));
-
-                mapList.add(temp);
-
-            }
-
-            return ResultUtil.success(mapList);
-
-        }
-
     }
 }

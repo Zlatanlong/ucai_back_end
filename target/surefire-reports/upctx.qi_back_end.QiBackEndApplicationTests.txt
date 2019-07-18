@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: upctx.qi_back_end.QiBackEndApplicationTests
 -------------------------------------------------------------------------------
-Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 6.551 s - in upctx.qi_back_end.QiBackEndApplicationTests
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 11.6 s - in upctx.qi_back_end.QiBackEndApplicationTests

@@ -31,7 +31,4 @@ public class ScoreDishController {
     public Result<ScoreDish> getScore(Integer dishid) {
         return scoreDishService.getScore(dishid);
     }
-
-   // @GetMapping("/getscoresort")
-    //public Result<ScoreDish> getScoreSort(String taste){return }
 }
