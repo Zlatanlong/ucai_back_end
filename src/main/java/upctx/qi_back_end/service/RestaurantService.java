@@ -10,7 +10,10 @@ import java.util.List;
 public interface RestaurantService {
     // 获取全部餐厅名和id（查）
     Result<List<Restaurant>> getAllRestaurantName();
+    //获取最近餐厅的id
+    //Result<Dish> getDishByLocation(Double Latitude, Double Longitude);
 
+    Result<Dish> getDishByLocation(Double Latitude, Double Longitude);
     // 获得餐厅总数
     Result<Integer> getCount();
 
@@ -38,6 +41,13 @@ public interface RestaurantService {
     Result<Dish> getDishByRestaurant(Integer id);
 
     /**
+     * 对上方的按餐厅号查询的重载，先根据经纬度确定餐厅号，再查询
+     * @param Latitude
+     * @param Longitude
+     * @return
+     */
+
+    /**
      * 获取餐厅中每个菜赞最多的回复
      *
      * @param id
@@ -50,4 +60,10 @@ public interface RestaurantService {
 
     //删除一个餐厅 超管方法
     Result<Restaurant> delRestaurant(Integer id);
+
+    //获取位置最近的餐厅id
+   // Integer getClosetRestaurant(String latitude, String longitide);
+
+    //测试获取数据库中的经纬度和餐厅号
+    Result<List<Restaurant>> getLatitude();
 }
