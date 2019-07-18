@@ -1,0 +1,41 @@
+spring:
+  profiles:
+    active: prod
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: false
+#    设置成建表默认引擎是DB
+    database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
+#  限制最大文件和最大请求
+  servlet:
+    multipart:
+      max-file-size: 3Mb
+      max-request-size: 3MB
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: GMT+8
+  file:
+    urlPath: http://upctx.cn/img/
+  # JavaMailSender 邮件发送的配置
+  mail:
+    host: smtp.qq.com
+    username: long-txgc@foxmail.com
+    password: twykpbiewtzvbdcj
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+            required: true
+          socketFactory:
+            port: 465
+            class: javax.net.ssl.SSLSocketFactory
+            fallback: false
+    port: 465
+    api-path: http://106.14.171.221:8080/qi_back_end
+    active-success: http://106.14.171.221/#/activate-success
+    active-failded: http://106.14.171.221/#/activate-failed
+  front-end:
+    logUrl: http://www.upctx.cn/#/login
