@@ -8,4 +8,4 @@ spring:
   file:
     filePath: /Users/zlatan/Desktop/ceshi/
 #前端地址
-    urlPath: /Users/zlatan/Desktop/ceshi/
+    urlPath: file:///Users/zlatan/Desktop/ceshi/
