@@ -2,13 +2,13 @@
 spring:
   datasource:
     driver-class-name: com.mysql.jdbc.Driver
-    url: jdbc:mysql://106.14.171.221:3306/qiruan?useUnicode=true&characterEncoding=UTF-8&useSSL=false
-    username: lcl
-    password: '!@#Ll1997'
+    url: jdbc:mysql://39.97.102.59:3306/qiruan?useUnicode=true&characterEncoding=UTF-8&useSSL=false
+    username: qiruan
+    password: 'frLLAYNM85'
   server:
     context-path: /qi_back_end
   file:
 #    实际路径
-    filePath: /usr/share/nginx/html/img_qi
+    filePath: /www/server/tomcat/webapps/img_qi
 #    获取路径
-    urlPath: http://106.14.171.221/img_qi
+    urlPath: http://39.97.102.59:8080/img_qi

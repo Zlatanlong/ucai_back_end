@@ -1,6 +1,6 @@
 spring:
   profiles:
-    active: prod
+    active: dev
   jpa:
     hibernate:
       ddl-auto: update
@@ -16,12 +16,12 @@ spring:
     date-format: yyyy-MM-dd HH:mm:ss
     time-zone: GMT+8
   file:
-    urlPath: http://upctx.cn/img/
+    urlPath:
   # JavaMailSender 邮件发送的配置
   mail:
     host: smtp.qq.com
     username: long-txgc@foxmail.com
-    password: twykpbiewtzvbdcj
+    password: jkdlisumwejfbdef
     properties:
       mail:
         smtp:
@@ -34,8 +34,8 @@ spring:
             class: javax.net.ssl.SSLSocketFactory
             fallback: false
     port: 465
-    api-path: http://106.14.171.221:8080/qi_back_end
-    active-success: http://106.14.171.221/#/activate-success
-    active-failded: http://106.14.171.221/#/activate-failed
+    api-path: http://39.97.102.59:8080/qi_back_end
+    active-success: https://94k0pl.coding-pages.com/#/activate-success
+    active-failded: https://94k0pl.coding-pages.com/#/activate-failed
   front-end:
-    logUrl: http://www.upctx.cn/#/login
+    logUrl: https://94k0pl.coding-pages.com/#/login

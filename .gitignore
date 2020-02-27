@@ -1,6 +1,8 @@
 
 src/main/main.iml
 src/test/test.iml
+src/main/resources/application-prod.yml
+out
 .idea
 .idea/vcs.xml
 *.xml
